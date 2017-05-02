@@ -7,9 +7,27 @@
   </tr>
   {{#each tophundred}}
   <tr>
-  	
     <td>{{this.id}}</td>
     <td>{{this.player}}</td>
+  </tr>
+  {{/each}}
+</table>
+
+
+<table>
+  {{#each runningbacks}}
+  <tr>
+    <td>{{this.player}}</td>
+    <td>{{this.team}}</td>
+    <td>{{this.rushydsgm}}</td>
+    <td>{{this.attgm}}</td>
+    <td>{{this.rushatt}}</td>
+    <td>{{this.rushyds}}</td>
+    <td>{{this.rushtds}}</td>
+    <td>{{this.rec}}</td>
+    <td>{{this.recyds}}</td>
+    <td>{{this.rectds}}</td>
+    <td>{{this.games}}</td>
   </tr>
   {{/each}}
 </table>
