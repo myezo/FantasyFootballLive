@@ -1,0 +1,22 @@
+body{
+	background-color: black;
+}
+
+li a{
+	font-weight: bold;
+}
+
+td{
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #dee0e2;
+}
+
+th{
+	font-size: 15px;
+	font-weight: bold;
+	padding-left: 10px;
+	padding-right: 10px;
+}

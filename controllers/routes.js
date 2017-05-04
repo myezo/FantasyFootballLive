@@ -3,21 +3,66 @@ var router = express.Router();
 var mysql = require('mysql');
 var connection = require('../config/connection.js')
 
-var stats = {};
 
+
+//router.get('/', getQuarterbacks);
+
+/*
 router.get('/', function(req, res){
 	//res.send('hi')
 	connection.query('SELECT * FROM tophundred;', function(err, data){
         stats.tophundred=data;
-        res.render('index', {tophundred:data});
-        connection.query('SELECT * FROM runningbacks;', function(err, data){
-            stats.runningbacks=data;
-            res.render('index', {runningbacks:data});
+        //res.render('index', {tophundred:data});
+        connection.query('SELECT * FROM quarterbacks;', function(err, data){
+            stats.quarterbacks=data;
+            res.render('index', {quarterbacks:data});
             //do the running backs here and so on
         })
     })
-
 })
+*/
+
+router.get('/', function(req, res){
+	var stats = {};
+	connection.query('SELECT * FROM quarterbacks;', function(err, data){
+		stats.quarterbacks = data;
+		connection.query('SELECT * FROM runningbacks;', function(err, data){
+			stats.runningbacks = data;
+			connection.query('SELECT * FROM widereceivers', function(err, data){
+				stats.widereceivers = data;
+				connection.query('SELECT * FROM tightends', function(err, data){
+					stats.tightends = data;
+					connection.query('SELECT * FROM defense', function(err, data){
+						stats.defense = data;
+						res.render('index', stats);
+					})
+				})
+			})
+		})
+	})
+})
+
+/*
+Promise.all([
+    db.query('select * from foo where ...'),
+    db.query('select * from bar where ...')
+])
+.spread(function(foo, bar) {
+    /* prepare data as you need them 
+    res.render('./index', { foo_table: foo, bar_table: bar});
+});
+*/
+
+/*
+function getQuarterbacks(req, res, next, data) {
+    var dbRequest = 'SELECT * FROM quarterbacks';
+        connection.query(dbRequest, function(error, rows) {
+            Add selected data to previous saved data. 
+            stats.quarterbacks=data;
+            res.render('index', {quarterbacks:data});
+    	});
+}
+*/
 
 
 module.exports = router;

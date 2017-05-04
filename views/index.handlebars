@@ -1,5 +1,182 @@
-<h1>Football Stats</h1>
+<div class="container">
 
+ <h1>Football Stats</h1>
+  <div class="container">
+    <h2>2016 Stats</h2>
+    <ul class="nav nav-tabs" data-tabs="tabs">
+        <li class="active"><a data-toggle="tab" href="#qbs">Quarterbacks</a></li>
+        <li><a data-toggle="tab" href="#rbs">Runningbacks</a></li>
+        <li><a data-toggle="tab" href="#wrs">Wide Receivers</a></li>
+        <li><a data-toggle="tab" href="#tes">Tight Ends</a></li>
+        <li><a data-toggle="tab" href="#def">Defense</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="qbs">
+            <table>
+              <tr>
+                <th>Player</th>
+                <th>Team</th>
+                <th>PassYds</th>
+                <th>Att</th>
+                <th>Comp</th>
+                <th>PassComp%</th>
+                <th>TDS</th>
+                <th>INTs</th>
+                <th>RushYds</th>
+                <th>RushTds</th>
+                <th>Games</th>
+              </tr>
+                {{#each quarterbacks}}
+                  <tr>
+                    <td>{{this.player}}</td>
+                    <td>{{this.team}}</td>
+                    <td>{{this.passydsgm}}</td>
+                    <td>{{this.att}}</td>
+                    <td>{{this.comp}}</td>
+                    <td>{{this.passcomp}}</td>
+                    <td>{{this.tds}}</td>
+                    <td>{{this.interceptions}}</td>
+                    <td>{{this.rushyds}}</td>
+                    <td>{{this.rushtds}}</td>
+                    <td>{{this.games}}</td>
+                    <td><a href="#">Add Player</a></td>
+                  </tr>
+                {{/each}}
+            </table>
+        </div>
+        <div class="tab-pane" id="rbs">
+            <table>
+              <tr>
+                <th>Player</th>
+                <th>Team</th>
+                <th>RushYdsGm</th>
+                <th>AttGm</th>
+                <th>RushAtt</th>
+                <th>RushYds</th>
+                <th>RushTds</th>
+                <th>Rec</th>
+                <th>RecYds</th>
+                <th>RecTds</th>
+                <th>Games</th>
+              </tr>
+                {{#each runningbacks}}
+                  <tr>
+                    <td>{{this.player}}</td>
+                    <td>{{this.team}}</td>
+                    <td>{{this.rushydsgm}}</td>
+                    <td>{{this.attgm}}</td>
+                    <td>{{this.rushatt}}</td>
+                    <td>{{this.rushyds}}</td>
+                    <td>{{this.rushtds}}</td>
+                    <td>{{this.rec}}</td>
+                    <td>{{this.recyds}}</td>
+                    <td>{{this.rectds}}</td>
+                    <td>{{this.games}}</td>
+                    <td><a href="#">Add Player</a></td>
+                  </tr>
+                {{/each}}
+            </table>
+        </div>
+        <div class="tab-pane" id="wrs">
+          <table>
+            <tr>
+              <th>Player</th>
+              <th>Team</th>
+              <th>RecYdsGm</th>
+              <th>RecTgtGm</th>
+              <th>RecGm</th>
+              <th>RecYds</th>
+              <th>RecTds</th>
+              <th>Games</th>
+            </tr>
+              {{#each widereceivers}}
+                <tr>
+                  <td>{{this.player}}</td>
+                  <td>{{this.team}}</td>
+                  <td>{{this.recydsgm}}</td>
+                  <td>{{this.rectgtgm}}</td>
+                  <td>{{this.recgm}}</td>
+                  <td>{{this.recyds}}</td>
+                  <td>{{this.rectds}}</td>
+                  <td>{{this.games}}</td>
+                  <td><a href="#">Add Player</a></td>
+                </tr>
+              {{/each}}
+            </table>
+        </div>
+        <div class="tab-pane" id="tes">
+            <table>
+              <tr>
+                <th>Player</th>
+                <th>Team</th>
+                <th>RecYdsGm</th>
+                <th>RecTgtGm</th>
+                <th>RecGm</th>
+                <th>TotalYds</th>
+                <th>RecYdsGm</th>
+                <th>RecTds</th>
+                <th>Games</th>
+              </tr>
+                {{#each tightends}}
+                  <tr>
+                    <td>{{this.player}}</td>
+                    <td>{{this.team}}</td>
+                    <td>{{this.recydsgm}}</td>
+                    <td>{{this.rectgtgm}}</td>
+                    <td>{{this.recgm}}</td>
+                    <td>{{this.totalyds}}</td>
+                    <td>{{this.recyds}}</td>
+                    <td>{{this.rectds}}</td>
+                    <td>{{this.games}}</td>
+                    <td><a href="#">Add Player</a></td>
+                  </tr>
+                {{/each}}
+              </table>
+        </div>
+        <div class="tab-pane" id="def">
+            <table>
+              <tr>
+                <th>Team</th>
+                <th>FpsGm</th>
+                <th>PtsAlw</th>
+                <th>IntGm</th>
+                <th>FumRecGm</th>
+                <th>SacksGm</th>
+                <th>TotalInt</th>
+                <th>TotalFum</th>
+                <th>TotalSks</th>
+                <th>Safeties</th>
+                <th>DefTds</th>
+                <th>QbPts</th>
+                <th>RbPts</th>
+                <th>WrPts</th>
+              </tr>
+                {{#each defense}}
+                  <tr>
+                    <td>{{this.team}}</td>
+                    <td>{{this.fpsgm}}</td>
+                    <td>{{this.ptsallowed}}</td>
+                    <td>{{this.intgm}}</td>
+                    <td>{{this.fumrecgm}}</td>
+                    <td>{{this.sacksgm}}</td>
+                    <td>{{this.totalint}}</td>
+                    <td>{{this.totalfum}}</td>
+                    <td>{{this.totalsacks}}</td>
+                    <td>{{this.safeties}}</td>
+                    <td>{{this.deftds}}</td>
+                    <td>{{this.qbpts}}</td>
+                    <td>{{this.rbpts}}</td>
+                    <td>{{this.wrpts}}</td>
+                    <td><a href="#">Add Player</a></td>
+                  </tr>
+                {{/each}}
+              </table>
+        </div>
+    </div>
+
+</div>
+
+<!--
 <table>
   <tr>
     <th>Rank</th>
@@ -27,7 +204,7 @@
  <p>{{this.rectds}}</p>
  <p>{{this.games}}</p>
 {{/each}}
-    
+-->   
    
   
 
