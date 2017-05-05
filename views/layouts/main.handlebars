@@ -11,6 +11,13 @@
 
 	</head>
 	<body>
+
+		{{#if logged_in}}
+			<a href="/users/sign-out" id="sign-out">Sign Out ({{this.username}})</a>
+		{{else}}
+			<a href="/users/sign-in">Sign In</a>
+			<a href="/users/new">Register</a>
+		{{/if}}
 		
 		{{{body}}}
 
@@ -21,6 +28,8 @@
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+		<script scr="../../public/js/code.js"></script>
 
 	</body>
 </html>

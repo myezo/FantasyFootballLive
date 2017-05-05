@@ -21,5 +21,10 @@ var routes = require('./controllers/routes.js');
 app.use('/', routes);
 
 
+var usersController = require("./controllers/usersController.js");
+
+app.use("/users", usersController);
+
+
 var port = process.env.PORT || 3000;
 app.listen(port);

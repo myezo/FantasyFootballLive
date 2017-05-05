@@ -5,23 +5,6 @@ var connection = require('../config/connection.js')
 
 
 
-//router.get('/', getQuarterbacks);
-
-/*
-router.get('/', function(req, res){
-	//res.send('hi')
-	connection.query('SELECT * FROM tophundred;', function(err, data){
-        stats.tophundred=data;
-        //res.render('index', {tophundred:data});
-        connection.query('SELECT * FROM quarterbacks;', function(err, data){
-            stats.quarterbacks=data;
-            res.render('index', {quarterbacks:data});
-            //do the running backs here and so on
-        })
-    })
-})
-*/
-
 router.get('/', function(req, res){
 	var stats = {};
 	connection.query('SELECT * FROM quarterbacks;', function(err, data){
@@ -34,7 +17,13 @@ router.get('/', function(req, res){
 					stats.tightends = data;
 					connection.query('SELECT * FROM defense', function(err, data){
 						stats.defense = data;
-						res.render('index', stats);
+						connection.query('SELECT * FROM offensiveline', function(err, data){
+							stats.offensiveline = data;
+							connection.query('SELECT * FROM tophundred', function(err, data){
+								stats.tophundred = data;
+								res.render('index', stats);
+							})
+						})
 					})
 				})
 			})

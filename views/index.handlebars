@@ -1,14 +1,17 @@
 <div class="container">
 
- <h1>Football Stats</h1>
-  <div class="container">
-    <h2>2016 Stats</h2>
+
+ <h1>Fantasy Football</h1>
+
+    <h2>2016 Stats and Rankings</h2>
     <ul class="nav nav-tabs" data-tabs="tabs">
         <li class="active"><a data-toggle="tab" href="#qbs">Quarterbacks</a></li>
         <li><a data-toggle="tab" href="#rbs">Runningbacks</a></li>
         <li><a data-toggle="tab" href="#wrs">Wide Receivers</a></li>
         <li><a data-toggle="tab" href="#tes">Tight Ends</a></li>
         <li><a data-toggle="tab" href="#def">Defense</a></li>
+        <li><a data-toggle="tab" href="#oline">Offensive Line</a></li>
+        <li><a data-toggle="tab" href="#top">Top Hundred</a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane active" id="qbs">
@@ -172,7 +175,42 @@
                 {{/each}}
               </table>
         </div>
-    </div>
+
+        <div class="tab-pane active" id="oline">
+            <table>
+                <tr>
+                  <th>Rank</th>
+                  <th>Team</th>
+                </tr>
+                {{#each offensiveline}}
+                <tr>
+                  <td>{{this.id}}</td>
+                  <td>{{this.team}}</td>
+                  <td><a href="#">Add Player</a></td>
+                </tr>
+                {{/each}}
+              </table>
+          </div>
+
+          <div class="tab-pane active" id="top">
+              <table>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Player</th>
+                  </tr>
+                  {{#each tophundred}}
+                  <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.player}}</td>
+                    <td><a href="#">Add Player</a></td>
+                  </tr>
+                  {{/each}}
+                </table>
+            </div>
+
+
+
+
 
 </div>
 
