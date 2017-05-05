@@ -21,6 +21,10 @@ router.get('/', function(req, res){
 							stats.offensiveline = data;
 							connection.query('SELECT * FROM tophundred', function(err, data){
 								stats.tophundred = data;
+								stats.logged_in = req.session.logged_in;
+								stats.user_id = req.session.user_id;
+								stats.user_email = req.session.user_email;
+								stats.username = req.session.username;
 								res.render('index', stats);
 							})
 						})

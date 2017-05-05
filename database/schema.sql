@@ -134,3 +134,11 @@ CREATE TABLE tophundred(
     posrank varbinary(255),
 	PRIMARY KEY(id)
 );
+
+CREATE TABLE scores
+(
+	id int NOT NULL AUTO_INCREMENT,
+	user_id INT NOT NULL, 
+	PRIMARY KEY (id),
+	FOREIGN KEY (user_id) references users(id)
+);

@@ -3,7 +3,7 @@ var express = require('express');
 var router  = express.Router();
 var mysql = require('mysql')
 var connection = require('../config/connection.js')
-
+//<form class="create-update-form" action="/users/create" method="POST">
 //this is the users_controller.js file
 router.get('/new', function(req,res) {
   res.render('users/new');
@@ -52,19 +52,22 @@ router.post('/create', function(req,res) {
   var query = "SELECT * FROM users WHERE email = ?"
 
   connection.query(query, [ req.body.email ], function(err, response) {
-    console.log(response)
+    //res.json(response) //works to this point
     if (response.length > 0) {
       res.send('we already have an email or username for this account')
     }else{
-
+      //res.send('got here on line 59') //works to this point
       bcrypt.genSalt(10, function(err, salt) {
-          //res.send(salt)
-          bcrypt.hash(req.body.password, salt, function(err, hash) {            
+          // res.send(salt) //works to this point
+          bcrypt.hash(req.body.password, salt, function(err, hash) {
+            // res.send(hash); //works to this point           
             var query = "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)"
 
             connection.query(query, [ req.body.username, req.body.email, hash ], function(err, response) {
+                // res.send(response); //works to this point
 
-              req.session.logged_in = true;
+                req.session.logged_in = true;
+                // res.send(req.session.logged_in); //works here
 
               req.session.user_id = response.insertId; //only way to get id of an insert for the mysql npm package
 
@@ -72,16 +75,14 @@ router.post('/create', function(req,res) {
               connection.query(query, [ req.session.user_id ], function(err, response) {
                 req.session.username = response[0].username;
                 req.session.user_email = response[0].email;
-                req.session.company = response[0].company;
 
 
-
-              res.redirect('/')
+                // res.send('hi') //works to this point
+               res.redirect('/');
               });
             });
           });
       });
-
     }
   });
 
